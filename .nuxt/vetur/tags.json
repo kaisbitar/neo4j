@@ -1,0 +1,17 @@
+{
+  "App": {
+    "description": "Auto imported from components/app.vue"
+  },
+  "QueryBox": {
+    "description": "Auto imported from components/queryBox.vue"
+  },
+  "QueryCanvas": {
+    "description": "Auto imported from components/queryCanvas.vue"
+  },
+  "QueryTable": {
+    "description": "Auto imported from components/queryTable.vue"
+  },
+  "QueryViewOptions": {
+    "description": "Auto imported from components/queryViewOptions.vue"
+  }
+}

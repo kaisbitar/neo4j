@@ -88,12 +88,6 @@ export default {
         }
         return obj;
       });
-      // this.tableItem = this.tableItems.map((item) => {
-      //   if (this.isObject(item)) {
-      //     console.log(item)
-      //     return JSON.stringify(item);
-      //   } return item;
-      // })
     },
     buildHeaders() {
       this.headers = [];

@@ -6,19 +6,23 @@
     />
     <div class="dataBox mt-n3">
       <queryViewOptions @viewchanged="changeView" :view="view" />
-      <queryTable
-        v-if="view === 'table'"
-        :height="dataBoxHeight"
-        :tableItems="itemsWithIndex"
-        :headers="headers"
-        :loading="loading"
-      />
-      <queryCanvas
-        v-if="view === 'graph'"
-        :height="dataBoxHeight"
-        :config="neoVizConfig"
-        :loading="loading"
-      />
+      <keep-alive>
+        <queryTable
+          v-if="view === 'table'"
+          :height="dataBoxHeight"
+          :tableItems="itemsWithIndex"
+          :headers="headers"
+          :loading="loading"
+        />
+      </keep-alive>
+      <keep-alive>  
+        <queryCanvas
+          v-if="view === 'graph'"
+          :height="dataBoxHeight"
+          :config="neoVizConfig"
+          :loading="loading"
+        />
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -35,7 +39,6 @@ export default {
       text: "",
       value: "itemIndex",
       class: "blue-grey lighten-5 subtitle-2 text-center",
-      sortable: false,
     },
   }),
   computed: {
@@ -58,7 +61,7 @@ export default {
   methods: {
     changeView(view) {
       this.view = view;
-      this.handleSubmittedQuery();
+      // this.handleSubmittedQuery();
     },
     handleSubmittedQuery() {
       this.loading = true;

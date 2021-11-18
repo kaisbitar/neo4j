@@ -2,14 +2,15 @@
   <div class="d-flex appQueryBox">
     <!-- {{tableItems}} -->
     <v-textarea
-      label="neo4j$"
       v-model="cypherQueryLocal"
-      placeholder="Enter Cypher query.."
-      hint=""
-      no-resize
+      @keydown="inputHandler"
       class="QueryTextArea pl-4 pt-4 pb-4"
-      dense
+      placeholder="Enter Cypher query.."
+      hint="MATCH (n)..."
       spellcheck="false"
+      label="neo4j$"
+      no-resize
+      dense
     ></v-textarea>
     <div class="pt-6 pr-1 pl-1">
       <v-btn class="white" elevation="0" @click="submitQuery()">
@@ -36,6 +37,12 @@ export default {
     submitQuery() {
       this.$store.commit("setCypherQuery", this.cypherQueryLocal);
       this.$emit("querySubmitted");
+    },
+    inputHandler(e) {
+      if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
+        this.submitQuery();
+      }
     },
   },
   computed: {

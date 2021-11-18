@@ -4,14 +4,14 @@
       v-for="(item, key) in options"
       :key="key"
       :class="{ 'grey white--text': view === item.value }"
-      class="pt-3 pb-3 text-center"
       @click="$emit('viewchanged', item.value)"
+      class="pt-3 pb-3 text-center"
       tile
       flat
     >
       <v-icon
-        class="viewIcon"
         :class="{ 'white--text': view === item.value }"
+        class="viewIcon"
         >{{ item.icon }}</v-icon
       >
       <div class="caption">{{ item.text }}</div>

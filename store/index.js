@@ -8,7 +8,7 @@ export const getters = () => ({
 })
 
 export const state = () => ({
-    cypherQuery: 'MATCH (m0:ICETYPE {name:"DWL_WallSetType-t"})-[r:yDimension]->(v0:ICEVALUE {name:"4.0"})  MATCH (m0)-->(o0:ICEOPTION)-->(p0:ICETYPE)-->(q0:ICEOPTION {name:"DWL_SubWall-o"})  RETURN m0, o0, v0, r limit 50',
+    cypherQuery: 'MATCH (m0:ICETYPE {name:"DWL_WallSetType-t"})-[r:yDimension]->(v0:ICEVALUE {name:"4.0"})  MATCH (m0)-->(o0:ICEOPTION)-->(p0:ICETYPE)-->(q0:ICEOPTION {name:"DWL_SubWall-o"})  RETURN m0.name, o0._id, v0.name, toString(count(v0)) as v0Count limit 50',
     cypherQueryData: [],
     neoVizConfig: []
 })

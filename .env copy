@@ -2,7 +2,7 @@ PORT=3000
 
 #Database
 
-url=bolt://localhost:11013
-db_username=neo4j
-db_password=neo4j123
+url=bolt://localhost:PORT
+db_username=USERNAME
+db_password=PASSWORD
 database=

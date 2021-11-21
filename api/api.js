@@ -3,14 +3,19 @@ import { fetchFromDataBase, fetchNeoVisObjFromDataBase } from '../controllers/ne
 
 const app = express()
 
-app.get('/run-cypher-query/:query', async (req, res) => {
-    const result = await fetchFromDataBase(req.params.query)
-    res.json(result)
+app.get('/run-cypher-query/:query', async (req, res, next) => {
+ try { 
+   const result = await fetchFromDataBase(req.params.query)
+   res.json(result) 
+  }
+  catch(err) { 
+    res.status(500).json(err) 
+  } 
 })
 
 app.get('/get-neo-obj/:query', async (req, res) => {
-    const result = await fetchNeoVisObjFromDataBase(req.params.query)
-    res.json(result)
+  const result = await fetchNeoVisObjFromDataBase(req.params.query)
+  res.json(result)
 })
 
 export default app

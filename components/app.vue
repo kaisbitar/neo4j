@@ -1,5 +1,10 @@
 <template>
   <div class="app white">
+    <notifications
+      :width="400"
+      position="center center"
+      classes="ErrNotification webKitWidth"
+    />
     <queryBox
       @querySubmitted="handleSubmittedQuery()"
       :tableItems="tableItems"
@@ -15,7 +20,7 @@
           :loading="loading"
         />
       </keep-alive>
-      <keep-alive>  
+      <keep-alive>
         <queryCanvas
           v-if="view === 'graph'"
           :height="dataBoxHeight"
@@ -61,7 +66,6 @@ export default {
   methods: {
     changeView(view) {
       this.view = view;
-      // this.handleSubmittedQuery();
     },
     handleSubmittedQuery() {
       this.loading = true;
@@ -78,7 +82,10 @@ export default {
         });
     },
     prepareTableData() {
-      if (this.cypherQueryData.length === 0) return;
+      if (!this.cypherQueryData || this.cypherQueryData.length === 0) {
+        this.tableItems = []
+        return
+      };
       this.buildTableItems();
       this.buildHeaders();
     },
@@ -119,5 +126,9 @@ export default {
 .dataBox {
   display: grid;
   grid-template-columns: 5% 95%;
+}
+.ErrNotification {
+  padding: 40px;
+  border: 5px solid #ccc;
 }
 </style>

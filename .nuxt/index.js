@@ -17,6 +17,7 @@ import nuxt_plugin_plugin_6adc7912 from 'nuxt_plugin_plugin_6adc7912' // Source:
 import nuxt_plugin_plugin_201683dd from 'nuxt_plugin_plugin_201683dd' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_axios_731d1bcc from 'nuxt_plugin_axios_731d1bcc' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_vuejsonexcel_a434eb30 from 'nuxt_plugin_vuejsonexcel_a434eb30' // Source: ..\\plugins\\vue-json-excel.js (mode: 'all')
+import nuxt_plugin_notificationsclient_6eb3b8c6 from 'nuxt_plugin_notificationsclient_6eb3b8c6' // Source: ..\\plugins\\notifications-client (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -224,6 +225,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_vuejsonexcel_a434eb30 === 'function') {
     await nuxt_plugin_vuejsonexcel_a434eb30(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_notificationsclient_6eb3b8c6 === 'function') {
+    await nuxt_plugin_notificationsclient_6eb3b8c6(app.context, inject)
   }
 
   // Lock enablePreview in context

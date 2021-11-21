@@ -1,9 +1,17 @@
 
 import axios from 'axios'
+import Vue from 'vue'
 
 export function fetchQueryData(query) {
-  return axios.get('api/run-cypher-query/' + query).then(response => {
-    return response.data
+  return axios.get('api/run-cypher-query/' + query)
+    .then(response => {
+      return response.data
+    })
+    .catch(error => {
+      Vue.notify({
+        title: error.response.data.name,
+        text: error.response.data.code
+      });
   })
 }
 

@@ -2,8 +2,7 @@
   <div class="app white">
     <notifications
       :width="400"
-      position="center center"
-      classes="ErrNotification webKitWidth"
+      position="bottom right"
     />
     <queryBox
       @querySubmitted="handleSubmittedQuery()"
@@ -126,9 +125,5 @@ export default {
 .dataBox {
   display: grid;
   grid-template-columns: 5% 95%;
-}
-.ErrNotification {
-  padding: 40px;
-  border: 5px solid #ccc;
 }
 </style>
